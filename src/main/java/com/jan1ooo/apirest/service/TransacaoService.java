@@ -23,5 +23,9 @@ public class TransacaoService {
         return set;
     }
 
+    public void delete(){
+        set.clear();
+    }
+
 }
 

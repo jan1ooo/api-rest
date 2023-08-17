@@ -4,6 +4,7 @@ import com.jan1ooo.apirest.dto.TransacaoDTO;
 import com.jan1ooo.apirest.model.transaction.Transacao;
 import com.jan1ooo.apirest.service.TransacaoService;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,5 +29,11 @@ public class TransacaoController {
     @GetMapping
     public ResponseEntity<Set<Transacao>> findAll(){
         return ResponseEntity.ok().body(service.findAll());
+    }
+
+    @DeleteMapping
+    public ResponseEntity<Void> deleteAll(){
+        service.delete();
+        return ResponseEntity.ok().build();
     }
 }
