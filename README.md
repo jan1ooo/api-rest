@@ -24,5 +24,5 @@ mvnw clean package
 
 docker build -t api-rest:v1 .
 
-docker run -P --network api-rest api-rest:v1
+docker run -p 8080:8080 --name api-rest --network api-rest api-rest:v1
 ```
