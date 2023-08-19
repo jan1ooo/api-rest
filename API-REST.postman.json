@@ -1,0 +1,87 @@
+{
+	"info": {
+		"_postman_id": "8de89eb5-49c3-4c19-bb8f-9c8de1d1d1db",
+		"name": "API-REST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20790190"
+	},
+	"item": [
+		{
+			"name": "Save Transaction",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"valor\": 1299.9,\r\n    \"dataHora\": \"2022-08-01T11:11:26.485\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/transacao",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"transacao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Transations",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/transacao",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"transacao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Statistics",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/estatistica",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"estatistica"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete All Transaction",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/transacao",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"transacao"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
