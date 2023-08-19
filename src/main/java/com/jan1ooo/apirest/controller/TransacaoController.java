@@ -4,14 +4,15 @@ import com.jan1ooo.apirest.dto.TransacaoDTO;
 import com.jan1ooo.apirest.model.statistics.Estatisticas;
 import com.jan1ooo.apirest.model.transaction.Transacao;
 import com.jan1ooo.apirest.service.TransacaoService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
-import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
 
 @RestController
+@Tag(name = "Transação", description = "API Transação")
 public class TransacaoController {
 
     private final TransacaoService service;
