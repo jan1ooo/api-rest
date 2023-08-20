@@ -10,7 +10,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -31,7 +33,7 @@ public class TransacaoService {
             throw new BodyUnprocessableEntityException("valor precisa ser maior ou igual a zero!");
         }
 
-        if(LocalDateTime.now().isBefore(transacaoDTO.dataHora())){
+        if(OffsetDateTime.now().isBefore(transacaoDTO.dataHora())){
             logger.error("A data informado é inválida na requisição: POST /transacao");
             throw new BodyUnprocessableEntityException("data não pode ser futura!");
         }
@@ -55,11 +57,12 @@ public class TransacaoService {
     public Estatisticas estatisticas(){
         Set<Transacao> list = new HashSet<>();
 
-        /*Verifica se a transação foi feita nos ultimos 60 segundos*/
+        /* Verifica se a transação foi feita nos ultimos 60 segundos, caso queria que aumentar para 120 segundos,
+        * só aumentar a variável. */
+        Integer tempoLimite = 60;
         for(Transacao t : set){
             long time = t.getHoraTransacao().until(LocalDateTime.now(), ChronoUnit.SECONDS);
-            if(time < 60){
-                /*count++;*/
+            if(time < tempoLimite){
                 list.add(t);
             }
         }
@@ -67,12 +70,10 @@ public class TransacaoService {
         if(list.isEmpty()){
             return new Estatisticas(0L, 0.0, 0.0, 0.0, 0.0);
         }else{
-
             List<Double> doubleStats = new ArrayList<>();
             for(Transacao t : list){
                 doubleStats.add(t.getValor());
             }
-
             DoubleSummaryStatistics doubleSummaryStatistics = doubleStats.stream().collect(Collectors.summarizingDouble(e -> e));
             Long count = doubleSummaryStatistics.getCount();
             Double sum = doubleSummaryStatistics.getSum();

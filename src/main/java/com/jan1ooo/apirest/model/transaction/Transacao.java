@@ -7,6 +7,7 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Data
@@ -21,10 +22,9 @@ public class Transacao implements Comparable<Transacao>{
     private Double valor;
 
     @Past
-    private LocalDateTime dataHora;
+    private OffsetDateTime dataHora;
 
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
-    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
     private LocalDateTime horaTransacao;
 
     @Override
