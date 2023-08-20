@@ -26,3 +26,7 @@ docker build -t api-rest:v1 .
 
 docker run -p 8080:8080 --name api-rest --network api-rest api-rest:v1
 ```
+
+Log da aplicação
+
+![logger](https://user-images.githubusercontent.com/95763551/261866784-4af044aa-b61b-43e4-a3da-5c1b6c9aef27.jpg)
