@@ -6,6 +6,7 @@ import com.jan1ooo.apirest.model.transaction.Transacao;
 import com.jan1ooo.apirest.service.TransacaoService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +25,7 @@ public class TransacaoController {
     @PostMapping("/transacao")
     public ResponseEntity<Void> save(@Valid @RequestBody TransacaoDTO transacaoDTO){
         service.save(transacaoDTO);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @GetMapping("/transacao")
