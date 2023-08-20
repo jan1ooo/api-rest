@@ -30,3 +30,10 @@ docker run -p 8080:8080 --name api-rest --network api-rest api-rest:v1
 Log da aplicação
 
 ![logger](https://user-images.githubusercontent.com/95763551/261866784-4af044aa-b61b-43e4-a3da-5c1b6c9aef27.jpg)
+
+Swagger
+```
+http://localhost:8080/swagger-ui/index.html#/
+```
+![swagger](https://user-images.githubusercontent.com/95763551/261874308-ad414452-fdf9-4cac-8ff8-6d73123d1356.jpg)
+
